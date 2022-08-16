@@ -4,7 +4,7 @@ on:
         branches:
             - master
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
         steps: 
             - name: Checkout project
@@ -13,9 +13,9 @@ jobs:
               uses: actions/setup-node@v2.1.4
               with:
                 node-version: 12
-            - name: Build and push
+            - name: Build
               uses: alexthemaster/action-build-typescript@v1.2.1
-    deploy:
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                folder: dist
