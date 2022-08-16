@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install and Build
-        uses: alexthemaster/action-build-typescript@1.2.1
+        uses: alexthemaster/action-build-typescript@v1.2.1
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
