@@ -10,7 +10,7 @@ jobs:
       - name: Install and Build
         run: |
           npm install tsc
-          npx tsc
+          tsc
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
