@@ -4,18 +4,34 @@ on:
         branches:
             - master
 jobs:
-    build-and-deploy:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12
+      - name: Build Typescript
+        uses: alexthemaster/action-build-typescript@v1.2.1
+        with:
+          folder: .
+    deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
-        steps: 
-            - name: Checkout project
-              uses: actions/checkout@v2
-            - name: Setup Node.js
-              uses: actions/setup-node@v2.1.4
-              with:
-                node-version: 12
-            - name: Build
-              uses: alexthemaster/action-build-typescript@v1.2.1
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                folder: .
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Setup Pages
+            uses: actions/configure-pages@v1
+          - name: Upload artifact
+            uses: actions/upload-pages-artifact@v1
+            with:
+              # Upload entire repository
+              path: '.'
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1
