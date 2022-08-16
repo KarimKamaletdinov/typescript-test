@@ -11,6 +11,8 @@ jobs:
               uses: actions/checkout@v3
             - name: Setup Node.js
               uses: actions/setup-node@v2.1.4
+            - name: Build Typescript
+              run: tsc
             - name: Push
               uses: EndBug/add-and-commit@v9
               with:
