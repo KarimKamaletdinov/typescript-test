@@ -10,7 +10,6 @@ jobs:
       - name: Install and Build
         run: |
           cd /
-          npm install tsc
           tsc
 
       - name: Deploy 🚀
