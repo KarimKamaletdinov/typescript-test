@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Install and Build
         run: |
+          cd /
           npm install tsc
           tsc
 
