@@ -19,4 +19,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          pushToBranch: true # optional; can either be true or false | defaults to false
+          branch: 'dist' # optional; the name of the branch the action should push the compiled code to | defaults to dist
+          githubToken: ${{ secrets.GITHUB_TOKEN }} # required if you use the pushToBranch option
           folder: .
